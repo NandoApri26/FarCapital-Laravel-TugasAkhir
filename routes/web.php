@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 // Use Controller
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\ContaintController;
+use App\Http\Controllers\LevelController;
 
 
 
@@ -12,6 +13,7 @@ use App\Http\Controllers\ContaintController;
 // Use Models
 use App\Models\Coach;
 use App\Models\Containt;
+use App\Models\Level;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,5 +46,8 @@ Route::get('/Admin/Coach/create', [CoachController::class, 'create']);
 Route::post('/Admin/Coach', [CoachController::class, 'store']);
 Route::delete('/Admin/Coach/{coach}', [CoachController::class, 'destroy']);
 Route::get('/Admin/Coach/{coach}/edit', [CoachController::class, 'edit']);
-Route::get('/Admin/Coach/{coach}', [CoachController::class, 'update']);
+Route::patch('/Admin/Coach/{coach}', [CoachController::class, 'update']);
 Route::get('/Admin/Coach/{coach}', [CoachController::class, 'show']);
+
+// Level
+Route::get('/Admin/Level', [LevelController::class, 'index']);
