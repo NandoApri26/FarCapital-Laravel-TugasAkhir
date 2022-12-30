@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->date('tanggal_lahir');
+            $table->enum('jk', ['Laki-Laki', 'Perempuan']);
             $table->text('alamat');
             $table->text('prestasi');
             $table->string('foto');

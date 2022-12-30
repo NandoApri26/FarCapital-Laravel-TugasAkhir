@@ -26,7 +26,8 @@ class AtletController extends Controller
      */
     public function create()
     {
-        //
+        $level = Level::all();
+        return view('Admin.Atlet.create', compact('level'));
     }
 
     /**
@@ -37,7 +38,21 @@ class AtletController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $img = $request->file('foto');//Menggambil file dari form
+        $file_atlet = time(). "-". $img->getClientOriginalName(); //mengambil dan mengedit nama file dari form
+        $img->move('foto_atlet/', $file_atlet); //proses memasukkan file kedalam direktori laravel
+        Atlet::create(
+            [
+                'nama' => $request->nama,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'jk' => $request->jk,
+                'alamat' => $request->alamat,
+                'prestasi' => $request->prestasi,
+                'foto' => $file_atlet,
+                'level_id' => $request->level_id
+            ]
+        );
+        return redirect('/Admin/Atlet')->with('success', 'Berhasil ditambah');
     }
 
     /**
@@ -59,7 +74,8 @@ class AtletController extends Controller
      */
     public function edit(Atlet $atlet)
     {
-        //
+        $atlet = Atlet::all();
+        return view('Admin.Atlet.update', compact('atlet', 'level'));
     }
 
     /**
@@ -71,7 +87,7 @@ class AtletController extends Controller
      */
     public function update(Request $request, Atlet $atlet)
     {
-        //
+        
     }
 
     /**
@@ -82,6 +98,7 @@ class AtletController extends Controller
      */
     public function destroy(Atlet $atlet)
     {
-        //
+        $atlet->delete();
+        return redirect('/Admin/Atlet');
     }
 }

@@ -98,6 +98,7 @@ class LevelController extends Controller
      */
     public function destroy(Level $level)
     {
-        //
+        $level->delete();
+        return redirect('/Admin/Level');
     }
 }
