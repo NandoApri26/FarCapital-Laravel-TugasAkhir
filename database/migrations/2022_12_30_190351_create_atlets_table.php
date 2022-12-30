@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->text('alamat');
             $table->text('prestasi');
+            $table->string('foto');
             $table->foreignId('level_id')->constrained('levels')->onDelete('restrict')->onUpdate('restrict');
             $table->timestamps();
         });

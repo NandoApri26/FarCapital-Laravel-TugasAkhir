@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\ContaintController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\AtletController;
 
 
 
@@ -14,6 +15,7 @@ use App\Http\Controllers\LevelController;
 use App\Models\Coach;
 use App\Models\Containt;
 use App\Models\Level;
+use App\Models\Atlet;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,14 @@ Route::get('/Admin/Coach/{coach}', [CoachController::class, 'show']);
 Route::get('/Admin/Level', [LevelController::class, 'index']);
 Route::get('/Admin/Level/create', [LevelController::class, 'create']);
 Route::post('/Admin/Level', [LevelController::class, 'store']);
-Route::delete('/Admin/Level/{level', [LevelController::class, 'destroy']);
+Route::delete('/Admin/Level/{level}', [LevelController::class, 'destroy']);
 Route::get('/Admin/Level/{level}/edit', [LevelController::class, 'edit']);
 Route::patch('/Admin/Level/{level}', [LevelController::class, 'update']);
+
+// Atlet
+Route::get('/Admin/Atlet', [AtletController::class, 'index']);
+Route::get('/Admin/Atlet/create', [AtletController::class, 'create']);
+Route::post('/Admin/Atlet', [AtletController::class, 'store']);
+Route::delete('/Admin/Atlet/{atlet}', [AtletController::class, 'destroy']);
+Route::get('/Admin/Atlet/{atlet}/edit', [AtletController::class, 'edit']);
+Route::patch('/Admin/Atlet/{atlet}', [AtletController::class, 'update']);
