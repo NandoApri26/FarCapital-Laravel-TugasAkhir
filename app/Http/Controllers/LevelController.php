@@ -26,7 +26,8 @@ class LevelController extends Controller
      */
     public function create()
     {
-        //
+        $coach = Coach::all();
+        return view('Admin.Level.create', compact('coach'));
     }
 
     /**
@@ -37,7 +38,14 @@ class LevelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Level::create(
+            [
+                'level' => $request->level,
+                'lapangan' => $request->lapangan,
+                'coach_id' => $request->coach_id,
+            ]
+        );
+        return redirect('/Admin/Level')->with('success', 'Berhasil ditambah');
     }
 
     /**
@@ -59,7 +67,8 @@ class LevelController extends Controller
      */
     public function edit(Level $level)
     {
-        //
+        $coach = Coach::all();
+        return view('Admin.Level.update', compact('level', 'coach'));
     }
 
     /**
@@ -71,7 +80,14 @@ class LevelController extends Controller
      */
     public function update(Request $request, Level $level)
     {
-        //
+        Level::where('id', $level->id)->update(
+            [
+                'level' => $request->level,
+                'lapangan' => $request->lapangan,
+                'coach_id' => $request->coach_id,
+            ]
+        );
+        return redirect('/Admin/Level');
     }
 
     /**

@@ -29,10 +29,14 @@
                                 @foreach ($level as $item)
                                 <tr>
                                     <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        <div>
-                                            <img src="{{ asset('foto_coach/' .$item->coach->foto) }}" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-in-out h-9 w-9 rounded-xl" alt="user1" />
+                                        <div class="flex px-2 py-1">
+                                            <div>
+                                                <img src="{{ asset('foto_coach/' .$item->coach->foto) }}" class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-in-out h-9 w-9 rounded-xl" alt="user1" />
+                                            </div>
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 text-sm leading-normal dark:text-white">{{ $item->coach->nama }}</h6>
+                                            </div>
                                         </div>
-                                        <h1 class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">{{ $item->coach->nama }}</h1>
                                     </td>
                                     <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <h1 class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">{{ $item->level }}</h1>
@@ -41,14 +45,11 @@
                                         <h1 class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">{{ $item->lapangan }}</h1>
                                     </td>
                                     <td class="p-2 pt-5 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent flex items-center">
-                                        <a href="{{ url('/Admin/Containt/' . $item->id ) }}"
-                                            ><span class="fa-fw select-all fas text-blue-600"></span>
-                                        </a>
-                                        <a href="{{ url('/Admin/Containt/' . $item->id . '/edit')}}"><span
-                                                class="fa-fw select-all fas text-orange-500"></span>
+                                        <a href="{{ url('/Admin/Level/' . $item->id . '/edit')}}"><span
+                                                class="fa-fw select-all fas text-green-400"></span>
                                         </a>
                                         <form method="POST"
-                                            action="{{ url('/Admin/Containt/' . $item->id) }}">
+                                            action="{{ url('/Admin/Level/' . $item->id) }}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"><span

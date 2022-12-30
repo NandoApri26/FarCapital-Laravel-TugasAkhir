@@ -51,3 +51,8 @@ Route::get('/Admin/Coach/{coach}', [CoachController::class, 'show']);
 
 // Level
 Route::get('/Admin/Level', [LevelController::class, 'index']);
+Route::get('/Admin/Level/create', [LevelController::class, 'create']);
+Route::post('/Admin/Level', [LevelController::class, 'store']);
+Route::delete('/Admin/Level/{level', [LevelController::class, 'destroy']);
+Route::get('/Admin/Level/{level}/edit', [LevelController::class, 'edit']);
+Route::patch('/Admin/Level/{level}', [LevelController::class, 'update']);
