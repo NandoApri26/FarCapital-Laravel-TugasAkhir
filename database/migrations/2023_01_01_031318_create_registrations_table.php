@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->text('alamat');
             $table->string('foto');
+            $table->enum('status', ['Cek', 'Terima', 'Tolak']);
 
             $table->timestamps();
         });

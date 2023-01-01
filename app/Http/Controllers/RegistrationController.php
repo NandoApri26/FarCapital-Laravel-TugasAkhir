@@ -14,7 +14,8 @@ class RegistrationController extends Controller
      */
     public function index()
     {
-        //
+        $registration = Registration::all();
+        return view('Admin.Registration.index', compact('registration'));
     }
 
     /**

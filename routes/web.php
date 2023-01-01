@@ -7,15 +7,19 @@ use App\Http\Controllers\CoachController;
 use App\Http\Controllers\ContaintController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\AtletController;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\FrontendController;
 
 
 
 
 // Use Models
-use App\Models\Coach;
-use App\Models\Containt;
-use App\Models\Level;
-use App\Models\Atlet;
+// use App\Models\Coach;
+// use App\Models\Containt;
+// use App\Models\Level;
+// use App\Models\Atlet;
+// use App\Models\Registration;
+// use App\Models\Frontend;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +71,19 @@ Route::delete('/Admin/Atlet/{atlet}', [AtletController::class, 'destroy']);
 Route::get('/Admin/Atlet/{atlet}/edit', [AtletController::class, 'edit']);
 Route::patch('/Admin/Atlet/{atlet}', [AtletController::class, 'update']);
 Route::get('/Admin/Atlet/{atlet}', [AtletController::class, 'show']);
+
+// Registrations
+Route::get('/Admin/Registration', [RegistrationController::class, 'index']);
+Route::get('/Admin/Registration/create', [RegistrationController::class, 'create']);
+Route::post('/r', [FrontendController::class, 'pendaftaran']);
+Route::delete('/Admin/Registration/{registration}', [RegistrationController::class, 'destroy']);
+Route::get('/Admin/Registration/{registration}/edit', [RegistrationController::class, 'edit']);
+Route::patch('/Admin/Registration/{registration}', [RegistrationController::class, 'update']);
+Route::get('/Admin/Registration/{registration}', [RegistrationController::class, 'show']);
+
+Route::get('/User/Home', [FrontendController::class, 'index']);
+Route::get('/User/Tentang-Kami', [FrontendController::class, 'TentangKami']);
+Route::get('/User/Atlet', [FrontendController::class, 'atlet']);
+Route::get('/User/Atlet/{atlet}', [FrontendController::class, 'showatlet']);
+Route::get('/User/Pendaftaran/create', [FrontendController::class, 'create']);
+Route::post('/User/Pendaftaran', [FrontendController::class, 'pendaftaran']);

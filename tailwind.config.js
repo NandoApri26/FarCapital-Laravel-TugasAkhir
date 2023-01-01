@@ -2,7 +2,11 @@ const plugin = require("tailwindcss/plugin");
 
 module.exports = {
   mode: "jit",
-  content: ["./build/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js}", "./node_modules/flowbite/**/*.js",
+  "./resources/**/*.blade.php",
+  "./resources/**/*.js",
+  "./resources/**/*.vue"
+],
   presets: [],
   darkMode: "class",
   theme: {
@@ -18,6 +22,13 @@ module.exports = {
       "2xl": "1320px",
       "2xl-max": { max: "1320px" },
     },
+    container: {
+      screens: {
+        xl: "1284px",
+      },
+      center:true,
+    },
+    
     colors: ({ colors }) => ({
       inherit: colors.inherit,
       current: colors.current,
@@ -725,6 +736,9 @@ module.exports = {
       serif: ['SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace', "serif"],
       body: ["Roboto", "sans-serif"],
       awesome: ["FontAwesome"],
+      neuton : ["Neuton"],
+      poopins : ["Poopins"],
+      FjallaOne : ["Fjalla One"],
     },
     fontSize: ({ theme }) => ({
       ...theme("spacing"),
@@ -746,6 +760,11 @@ module.exports = {
       "9xl": ["6rem", { lineHeight: "1" }],
       "10xl": ["8rem", { lineHeight: "1" }],
       "banner-calculate": ["calc(1.625rem+4.5vw)"],
+        2.5 : "10px",
+        4.5 : "18px",
+        12.5 : "46px",
+        21 : "84px",
+        30.5 : "122px",
     }),
     fontWeight: {
       thin: "100",
