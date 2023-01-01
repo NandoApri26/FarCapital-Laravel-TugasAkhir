@@ -116,7 +116,7 @@ class AtletController extends Controller
             ]
         );
 
-        if($request ->image !=null){
+        if($request->foto !=null){
             $img_atlet = $request->file('foto'); //mengambil dari form
             $file_atlet = time() . "_" . $img_atlet->getClientOriginalName();
             $img_atlet->move('foto_atlet', $file_atlet);

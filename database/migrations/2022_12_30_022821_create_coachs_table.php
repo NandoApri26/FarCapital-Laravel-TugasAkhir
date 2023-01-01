@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->enum('jk', ['Laki-Laki', 'Perempuan']);
             $table->text('alamat');
-            $table->enum('status', ['Aktif', 'Tidak Aktif']);
+            $table->enum('status', ['Aktif', 'TidakAktif']);
             $table->string('foto');
             $table->timestamps();
         });

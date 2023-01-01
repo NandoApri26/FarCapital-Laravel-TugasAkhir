@@ -85,7 +85,7 @@ class CoachController extends Controller
     public function update(Request $request, Coach $coach)
     {
         
-        if($request ->image !=null){
+        if($request ->foto !=null){
             $img = $request->file('foto'); //mengambil dari form
             $filename = time() . "_" . $img->getClientOriginalName();
             $img->move('foto_coach', $filename);
@@ -95,7 +95,7 @@ class CoachController extends Controller
                     "tanggal_lahir" => $request->tanggal_lahir,
                     "jk" => $request->jk,
                     "foto" => $filename,
-                    "stasus" => $request->stasus
+                    "status" => $request->status
                 ]
             );
 
@@ -110,7 +110,7 @@ class CoachController extends Controller
             );
 
         }
-        return redirect('/Admin.Coach');
+        return redirect('/Admin/Coach');
     }
 
     /**
