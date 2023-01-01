@@ -66,3 +66,4 @@ Route::post('/Admin/Atlet', [AtletController::class, 'store']);
 Route::delete('/Admin/Atlet/{atlet}', [AtletController::class, 'destroy']);
 Route::get('/Admin/Atlet/{atlet}/edit', [AtletController::class, 'edit']);
 Route::patch('/Admin/Atlet/{atlet}', [AtletController::class, 'update']);
+Route::get('/Admin/Atlet/{atlet}', [AtletController::class, 'show']);
