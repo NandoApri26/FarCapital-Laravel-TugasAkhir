@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Pelatih
 {
@@ -16,6 +17,10 @@ class Pelatih
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user()->level == 'pelatih') {
+            return $next($request);
+        } else {
+            return redirect('/login_pelatih');
+        }
     }
 }

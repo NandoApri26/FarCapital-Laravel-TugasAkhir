@@ -58,19 +58,21 @@
                                         <h1 class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">{{(strlen($item->prestasi) > 5) ? substr ($item ->prestasi, 0, 25). "..." : $item ->prestasi}}</h1>
                                     </td>
                                     <td class="p-2 pt-5 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent flex items-center">
-                                        <a href="{{ url('/Admin/Atlet/' . $item->id ) }}"
+                                        <a href="{{ url('/Admin/Containt/' . $item->id ) }}"
                                             ><span class="fa-fw select-all fas text-blue-600"></span>
                                         </a>
-                                        <a href="{{ url('/Admin/Atlet/' . $item->id . '/edit')}}"><span
+                                        @if (Auth::user() -> level == 'admin')
+                                            <a href="{{ url('/Admin/Containt/' . $item->id . '/edit')}}"><span
                                                 class="fa-fw select-all fas text-orange-500"></span>
                                         </a>
                                         <form method="POST"
-                                            action="{{ url('/Admin/Atlet/' . $item->id) }}">
+                                            action="{{ url('/Admin/Containt/' . $item->id) }}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"><span
                                                     class="fa-fw select-all fas text-red-600"></span></button>
                                         </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

@@ -51,7 +51,8 @@
                                         <a href="{{ url('/Admin/Containt/' . $item->id ) }}"
                                             ><span class="fa-fw select-all fas text-blue-600"></span>
                                         </a>
-                                        <a href="{{ url('/Admin/Containt/' . $item->id . '/edit')}}"><span
+                                        @if (Auth::user() -> level == 'admin')
+                                            <a href="{{ url('/Admin/Containt/' . $item->id . '/edit')}}"><span
                                                 class="fa-fw select-all fas text-orange-500"></span>
                                         </a>
                                         <form method="POST"
@@ -61,6 +62,9 @@
                                             <button type="submit"><span
                                                     class="fa-fw select-all fas text-red-600"></span></button>
                                         </form>
+                                        @endif
+                                        
+                                        
                                     </td>
                                 </tr>
                                 @endforeach

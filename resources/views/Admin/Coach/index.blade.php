@@ -51,19 +51,21 @@
                                         <span class="bg-gradient-to-tl from-emerald-500 to-teal-400 px-2.5 text-xs rounded-1.8 py-1.4 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ $item->status }}</span>
                                     </td>
                                     <td class="p-2 pt-5 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent flex items-center">
-                                        <a href="{{ url('/Admin/Coach/' . $item->id ) }}"
+                                        <a href="{{ url('/Admin/Containt/' . $item->id ) }}"
                                             ><span class="fa-fw select-all fas text-blue-600"></span>
                                         </a>
-                                        <a href="{{ url('/Admin/Coach/' . $item->id . '/edit')}}"><span
+                                        @if (Auth::user() -> level == 'admin')
+                                            <a href="{{ url('/Admin/Containt/' . $item->id . '/edit')}}"><span
                                                 class="fa-fw select-all fas text-orange-500"></span>
                                         </a>
                                         <form method="POST"
-                                            action="{{ url('/Admin/Coach/' . $item->id) }}">
+                                            action="{{ url('/Admin/Containt/' . $item->id) }}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit"><span
                                                     class="fa-fw select-all fas text-red-600"></span></button>
                                         </form>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

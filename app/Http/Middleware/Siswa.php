@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Siswa
 {
@@ -16,6 +17,10 @@ class Siswa
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (Auth::user()->level == 'siswa') {
+            return $next($request);
+        } else {
+            return redirect('/login_atlet');
+        }
     }
 }
