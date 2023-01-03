@@ -7,7 +7,7 @@
 </div>
 <div class="bg-gray-200 mt-10 p-5 w-[550px] mx-auto rounded-2xl font-poppins">
 
-    <form method="POST" action="{{url('/Admin/Registration')}}" enctype="multipart/form-data">
+    <form method="POST" action="{{url('/User/Registration')}}" enctype="multipart/form-data">
         @csrf
         <div class="mb-6 ">
             <label for="nama_depan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Depan</label>

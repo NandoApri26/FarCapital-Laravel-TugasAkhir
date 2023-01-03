@@ -108,7 +108,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     // Registrations
     Route::get('/Admin/Registration', [RegistrationController::class, 'index']);
     Route::get('/Admin/Registration/create', [RegistrationController::class, 'create']);
-    Route::post('/User/Registration', [FrontendController::class, 'pendaftaran']);
+    // Route::post('/User/Registration', [FrontendController::class, 'pendaftaran']);
     Route::delete('/Admin/Registration/{registration}', [RegistrationController::class, 'destroy']);
     Route::get('/Admin/Registration/{registration}/edit', [RegistrationController::class, 'edit']);
     Route::patch('/Admin/Registration/{registration}', [RegistrationController::class, 'update']);
@@ -133,6 +133,15 @@ Route::group(['middleware' => ['authsiswa', 'siswa']], function () {
     Route::get('/Admin/Atlet-Siswa', [AtletController::class, 'index']);
     Route::get('/Admin/Atlet-Siswa/{atlet}', [AtletController::class, 'show']);
 
+    // Registrations
+    Route::get('/Admin/Registration', [RegistrationController::class, 'index']);
+    Route::get('/Admin/Registration/create', [RegistrationController::class, 'create']);
+    // Route::post('/User/Registration', [FrontendController::class, 'pendaftaran']);
+    Route::delete('/Admin/Registration/{registration}', [RegistrationController::class, 'destroy']);
+    Route::get('/Admin/Registration/{registration}/edit', [RegistrationController::class, 'edit']);
+    Route::patch('/Admin/Registration/{registration}', [RegistrationController::class, 'update']);
+    Route::get('/Admin/Registration/{registration}', [RegistrationController::class, 'show']);
+
 });
 
 // Pelatih
@@ -156,9 +165,18 @@ Route::group(['middleware' => ['authpelatih', 'pelatih']], function () {
     Route::get('/Admin/Atlet-Pelatih', [AtletController::class, 'index']);
     Route::get('/Admin/Atlet-Pelatih/{atlet}', [AtletController::class, 'show']);
 
+    // Registrations
+    Route::get('/Admin/Registration', [RegistrationController::class, 'index']);
+    Route::get('/Admin/Registration/create', [RegistrationController::class, 'create']);
+   
+    Route::delete('/Admin/Registration/{registration}', [RegistrationController::class, 'destroy']);
+    Route::get('/Admin/Registration/{registration}/edit', [RegistrationController::class, 'edit']);
+    Route::patch('/Admin/Registration/{registration}', [RegistrationController::class, 'update']);
+    Route::get('/Admin/Registration/{registration}', [RegistrationController::class, 'show']);
+
 });
 
-
+Route::post('/User/Registration', [FrontendController::class, 'pendaftaran']);
 
 Route::get('/User/Home', [FrontendController::class, 'index']);
 Route::get('/User/Tentang-Kami', [FrontendController::class, 'TentangKami']);

@@ -41,9 +41,10 @@ class FrontendController extends Controller
 
     public function pendaftaran(Request $request)
     {
-        $pendaftaran = $request->foto('foto');//Menggambil file dari form
-        $file_pendaftaran = time(). "-". $pendaftaran->getClientOriginalName(); //mengambil dan mengedit nama file dari form
-        $pendaftaran->move('foto_pendaftaran/', $file_pendaftaran); //proses memasukkan file kedalam direktori laravel
+        // dd($request->all());
+        $img_pendaftaran = $request->file('foto');//Menggambil file dari form
+        $filename_pendaftaran = time(). "-". $img_pendaftaran->getClientOriginalName(); //mengambil dan mengedit nama file dari form
+        $img_pendaftaran->move('foto_pendaftaran/', $filename_pendaftaran); //proses memasukkan file kedalam direktori laravel
         Registration::create(
             [
                 'nama_depan' => $request->nama_depan,
@@ -54,7 +55,7 @@ class FrontendController extends Controller
                 'tempat_lahir' => $request->tempat_lahir,
                 'alamat' => $request->alamat,
                 'status' => 'Cek',
-                'foto' => $file_pendaftaran
+                'foto' => $filename_pendaftaran
             ]
         );
         return redirect('/User/Home')->with('success', 'Berhasil ditambah');
